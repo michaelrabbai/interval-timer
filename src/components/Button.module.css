@@ -1,0 +1,17 @@
+.button {
+  border-radius: 15%;
+  border: 2px solid white;
+  background-color: #1a2938;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  width: 7rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  border: 2px solid #409BF0;
+  color: #409BF0;
+}
