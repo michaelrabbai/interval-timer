@@ -1,22 +1,20 @@
-import './App.css';
+import { useState } from 'react';
+
+import Button from './components/Button';
+import Timer from './components/Timer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="global centered">
+      <div className="container column">
+        <span className="title">Interval Timer</span>
+        <Timer duration={5} />
+        <div className="button-container">
+          <Button title="Start" onClick={() => console.log('start clicked')} />
+          <Button title="Pause" onClick={() => console.log('stop clicked')} />
+        </div>
+      </div>
+    </main>
   );
 }
 
