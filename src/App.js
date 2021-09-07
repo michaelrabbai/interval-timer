@@ -22,15 +22,17 @@ function App() {
     <main className="global centered">
       <div className="container column">
         <span className="title">Interval Timer</span>
-        <TimerForm onSubmit={onSubmitHandler} />
-        <Timer duration={5} />
-        <div className="button-container">
-          <Button
-            title={!hasStarted ? 'Start' : 'Stop'}
-            onClick={startWorkoutHandler}
-          />
-          <Button title="Pause" onClick={pauseWorkoutHandler} />
-        </div>
+        {!hasStarted && <TimerForm onSubmit={onSubmitHandler} />}
+        {hasStarted && <Timer duration={5} />}
+        {hasStarted && (
+          <div className="button-container">
+            <Button
+              title={!hasStarted ? 'Start' : 'Stop'}
+              onClick={startWorkoutHandler}
+            />
+            <Button title="Pause" onClick={pauseWorkoutHandler} />
+          </div>
+        )}
       </div>
     </main>
   );
