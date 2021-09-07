@@ -12,6 +12,10 @@
 
 .button:hover,
 .button:active {
-  border: 2px solid #409BF0;
-  color: #409BF0;
+  border: 2px solid #409bf0;
+  color: #409bf0;
+}
+
+.submit {
+  margin-top: 1.5rem;
 }
