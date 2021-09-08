@@ -7,6 +7,5 @@ Hope this helps if you find yourself in a similar situation 💪
 Disclaimer: If you're here before it's finished, don't worry! I'll make sure it looks much better soon!
 
 Goals:
-
 - timer and associative timer functions
 - saving workouts
