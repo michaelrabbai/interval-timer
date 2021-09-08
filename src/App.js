@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Button from './components/Button';
 import TimerForm from './components/TimerForm';
 import Timer from './components/Timer';
+import { createWorkout } from './helpers';
+import Navbar from './components/Navbar';
 
 function App() {
   const [hasStarted, setHasStarted] = useState(false);
@@ -21,7 +23,7 @@ function App() {
   return (
     <main className="global centered">
       <div className="container column">
-        <span className="title">Interval Timer</span>
+        <Navbar />
         {!hasStarted && <TimerForm onSubmit={onSubmitHandler} />}
         {hasStarted && <Timer duration={5} />}
         {hasStarted && (
