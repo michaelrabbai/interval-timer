@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: #0f171e;
+  position: fixed;
+  top: 0;
+  padding: 0 15%;
+}
+
+.title {
+  font-size: 3rem;
+}
