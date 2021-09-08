@@ -10,11 +10,11 @@ const TimerForm = props => {
     <div className={classes.form}>
       <Formik
         initialValues={{
-          numReps: null,
-          exerciseDuration: null,
-          roundRestDuration: null,
-          numIntervals: null,
-          intervalRestDuration: null,
+          numReps: '',
+          exerciseDuration: '',
+          roundRestDuration: '',
+          numIntervals: '',
+          intervalRestDuration: '',
         }}
         validationSchema={Yup.object({
           numReps: Yup.number()
