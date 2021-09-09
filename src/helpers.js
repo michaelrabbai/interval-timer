@@ -11,7 +11,7 @@ export const createWorkout = workoutSpecs => {
   for (let interval = 0; interval < numIntervals; ++interval) {
     for (let rep = 0; rep < numReps; ++rep) {
       regimen.push({
-        exerciseTitle: 'Workout',
+        exerciseTitle: 'Exercise',
         duration: exerciseDuration,
       });
 
