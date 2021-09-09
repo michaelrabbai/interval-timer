@@ -15,14 +15,14 @@ export const createWorkout = workoutSpecs => {
         duration: exerciseDuration,
       });
 
-      if (rep !== numReps - 1) {
+      if (rep !== numReps - 1 && roundRestDuration > 0) {
         regimen.push({
           exerciseTitle: 'Round rest',
           duration: roundRestDuration,
         });
       }
     }
-    if (interval !== numIntervals - 1)
+    if (interval !== numIntervals - 1 && intervalRestDuration > 0)
       regimen.push({
         exerciseTitle: 'Interval rest',
         duration: intervalRestDuration,
