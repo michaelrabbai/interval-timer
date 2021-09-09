@@ -1,3 +1,5 @@
+import EXERCISETITLES from './constants/exercise-titles';
+
 export const createWorkout = workoutSpecs => {
   const {
     numIntervals,
@@ -11,20 +13,20 @@ export const createWorkout = workoutSpecs => {
   for (let interval = 0; interval < numIntervals; ++interval) {
     for (let rep = 0; rep < numReps; ++rep) {
       regimen.push({
-        exerciseTitle: 'Exercise',
+        exerciseTitle: EXERCISETITLES.exercise,
         duration: exerciseDuration,
       });
 
       if (rep !== numReps - 1 && roundRestDuration > 0) {
         regimen.push({
-          exerciseTitle: 'Round rest',
+          exerciseTitle: EXERCISETITLES.rest,
           duration: roundRestDuration,
         });
       }
     }
     if (interval !== numIntervals - 1 && intervalRestDuration > 0)
       regimen.push({
-        exerciseTitle: 'Interval rest',
+        exerciseTitle: EXERCISETITLES.intervalRest,
         duration: intervalRestDuration,
       });
   }
