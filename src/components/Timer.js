@@ -3,23 +3,35 @@ import { useEffect, useState } from 'react';
 import classes from './Timer.module.css';
 
 const Timer = props => {
-  const { duration } = props;
-  const [time, setTime] = useState(duration);
+  const { workout } = props;
+  const [time, setTime] = useState();
+  
 
   useEffect(() => {
     let timer;
-    if (time > 0) {
-      timer = setTimeout(() => {
+    timer = setTimeout(() => {
+      if (time > 1) {
         setTime(prevTime => --prevTime);
-      }, 1000);
-    }
+      } else {
+        const currentExercise = workout.shift();
+        console.log('currentExercise:');
+        console.log(currentExercise);
+        if (currentExercise) {
+          setTime(currentExercise.duration);
+        } else {
+          setTime(0);
+        }
+      }
+    }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [time]);
+  }, [time, workout]);
 
-  return <div className={classes.timer}>{time}</div>;
+  return (
+    <div className={classes.timer}>{time}</div>
+  );
 };
 
 export default Timer;
