@@ -7,37 +7,25 @@ import { createWorkout } from './helpers';
 import Navbar from './components/Navbar';
 
 function App() {
-  const [hasStarted, setHasStarted] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const [workout, setWorkout] = useState([]);
-
-  const startWorkoutHandler = () => {
-    console.log('start clicked');
-    setHasStarted(prevState => !prevState);
-  };
-
-  const pauseWorkoutHandler = () => {
-    console.log('pause clicked');
-  };
 
   const onSubmitHandler = values => {
     setWorkout(createWorkout(values));
-    setHasStarted(true);
+    setHasSubmitted(true);
+  };
+
+  const stopWorkoutHandler = () => {
+    setHasSubmitted(false);
   };
 
   return (
     <main className="global centered">
       <div className="container column">
         <Navbar />
-        {!hasStarted && <TimerForm onSubmit={onSubmitHandler} />}
-        {hasStarted && <Timer workout={workout} />}
-        {hasStarted && (
-          <div className="button-container centered">
-            <Button
-              title={!hasStarted ? 'Start' : 'Stop'}
-              onClick={startWorkoutHandler}
-            />
-            <Button title="Pause" onClick={pauseWorkoutHandler} />
-          </div>
+        {!hasSubmitted && <TimerForm onSubmit={onSubmitHandler} />}
+        {hasSubmitted && (
+          <Timer workout={workout} onStop={stopWorkoutHandler} />
         )}
       </div>
     </main>
