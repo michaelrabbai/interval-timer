@@ -11,8 +11,6 @@ const Timer = props => {
   const [time, setTime] = useState();
   const [title, setTitle] = useState('Timer');
 
-  console.log(workout);
-
   useEffect(() => {
     let timer;
     if (hasStarted) {
@@ -66,5 +64,3 @@ const Timer = props => {
 };
 
 export default Timer;
-// input: 2 2 3 2 4
-// output: 2 3 2 4 2 3 2
