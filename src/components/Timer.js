@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
+import EXERCISETITLES from '../constants/exercise-titles';
 import classes from './Timer.module.css';
 
 const Timer = props => {
   const { workout } = props;
+
   const [time, setTime] = useState();
-  
+  const [title, setTitle] = useState('Timer');
+
 
   useEffect(() => {
     let timer;
@@ -14,12 +17,12 @@ const Timer = props => {
         setTime(prevTime => --prevTime);
       } else {
         const currentExercise = workout.shift();
-        console.log('currentExercise:');
-        console.log(currentExercise);
         if (currentExercise) {
           setTime(currentExercise.duration);
+          setTitle(currentExercise.exerciseTitle);
         } else {
           setTime(0);
+          setTitle(EXERCISETITLES.end);
         }
       }
     }, 1000);
@@ -30,7 +33,10 @@ const Timer = props => {
   }, [time, workout]);
 
   return (
-    <div className={classes.timer}>{time}</div>
+    <div className={classes.timer}>
+      <span className={classes.title}>{title}</span>
+      <span className={classes.countdown}>{time}</span>
+    </div>
   );
 };
 

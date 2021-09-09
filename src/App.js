@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   const [hasStarted, setHasStarted] = useState(false);
+  const [workout, setWorkout] = useState([]);
 
   const startWorkoutHandler = () => {
     console.log('start clicked');
@@ -18,16 +19,19 @@ function App() {
     console.log('pause clicked');
   };
 
-  const onSubmitHandler = () => {};
+  const onSubmitHandler = values => {
+    setWorkout(createWorkout(values));
+    setHasStarted(true);
+  };
 
   return (
     <main className="global centered">
       <div className="container column">
         <Navbar />
         {!hasStarted && <TimerForm onSubmit={onSubmitHandler} />}
-        {hasStarted && <Timer duration={5} />}
+        {hasStarted && <Timer workout={workout} />}
         {hasStarted && (
-          <div className="button-container">
+          <div className="button-container centered">
             <Button
               title={!hasStarted ? 'Start' : 'Stop'}
               onClick={startWorkoutHandler}
