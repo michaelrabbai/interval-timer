@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import Button from './components/Button';
 import TimerForm from './components/TimerForm';
 import Timer from './components/Timer';
 import { createWorkout } from './helpers';

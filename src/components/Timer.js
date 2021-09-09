@@ -53,7 +53,7 @@ const Timer = props => {
       {!hasStarted && <Button title="Start" onClick={startWorkoutHandler} />}
       {hasStarted && <span className={classes.countdown}>{time}</span>}
       {hasStarted && (
-        <div className="button-container centered">
+        <div className={classes['button-container']}>
           <Button
             title={!hasStarted ? 'Start' : 'Pause'}
             onClick={toggleWorkoutHandler}

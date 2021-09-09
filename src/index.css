@@ -34,12 +34,6 @@ code {
   align-items: center;
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-}
-
 /* Utilities */
 .column {
   flex-direction: column;

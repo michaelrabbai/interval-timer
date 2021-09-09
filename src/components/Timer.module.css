@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 40rem;
 }
 
 .countdown {
@@ -14,4 +16,11 @@
 .title {
   font-size: 3rem;
   margin: 2rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
