@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Input from './Input';
 import Button from './Button';
 import classes from './TimerForm.module.css';
+import INPUTLABELS from '../constants/input-labels';
 
 const TimerForm = props => {
   return (
@@ -45,31 +46,31 @@ const TimerForm = props => {
       >
         <Form>
           <Input
-            label="Number of reps"
+            label={INPUTLABELS.numReps}
             name="numReps"
             type="text"
             placeholder={10}
           />
           <Input
-            label="Exercise duration (s)"
+            label={INPUTLABELS.exerciseDuration}
             name="exerciseDuration"
             type="text"
             placeholder={5}
           />
           <Input
-            label="Round rest duration"
+            label={INPUTLABELS.roundRestDuration}
             name="roundRestDuration"
             type="text"
             placeholder={30}
           />
           <Input
-            label="Number of intervals"
+            label={INPUTLABELS.numIntervals}
             name="numIntervals"
             type="text"
             placeholder={3}
           />
           <Input
-            label="Interval rest duration"
+            label={INPUTLABELS.intervalRestDuration}
             name="intervalRestDuration"
             type="text"
             placeholder={60}
