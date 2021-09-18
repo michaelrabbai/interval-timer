@@ -43,3 +43,17 @@ code {
   align-items: center;
   justify-content: center;
 }
+
+.exercise {
+  background-color: rgb(71, 134, 71);
+}
+
+.rest {
+  background-color: rgb(60, 60, 247);
+}
+.interval-rest {
+  background-color: rgb(111, 79, 143);
+}
+.end {
+  background-color: rgb(216, 97, 97);
+}

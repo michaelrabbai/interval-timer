@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import TITLES from '../constants/titles';
+import EXERCISE from '../constants/exercise';
 import Button from './Button';
 import classes from './Timer.module.css';
 
 const Timer = props => {
-  const { workout } = props;
+  const { workout, onBackground } = props;
 
   const [hasStarted, setHasStarted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -21,11 +21,14 @@ const Timer = props => {
         } else {
           const currentExercise = workout.shift();
           if (currentExercise) {
-            setTime(currentExercise.duration);
-            setTitle(currentExercise.exerciseTitle);
-          } else {
-            setTime(0);
-            setTitle(TITLES.exercise.end);
+            if (currentExercise.exerciseId !== EXERCISE.ids.end) {
+              setTime(currentExercise.duration);
+              setTitle(currentExercise.exerciseTitle);
+            } else {
+              setTime(currentExercise.duration);
+              setTitle(currentExercise.exerciseTitle);
+            }
+            onBackground(currentExercise);
           }
         }
       }, 1000);
@@ -34,13 +37,14 @@ const Timer = props => {
     return () => {
       clearTimeout(timer);
     };
-  }, [hasStarted, isPaused, time, workout]);
+  }, [hasStarted, isPaused, time, workout, onBackground]);
 
   const startWorkoutHandler = () => {
     const currentExercise = workout.shift();
     if (currentExercise) {
       setTime(currentExercise.duration);
       setTitle(currentExercise.exerciseTitle);
+      onBackground(currentExercise);
     }
     setHasStarted(true);
   };
