@@ -36,6 +36,11 @@ const Timer = props => {
   }, [hasStarted, time, workout]);
 
   const startWorkoutHandler = () => {
+    const currentExercise = workout.shift();
+    if (currentExercise) {
+      setTime(currentExercise.duration);
+      setTitle(currentExercise.exerciseTitle);
+    }
     setHasStarted(true);
   };
 
