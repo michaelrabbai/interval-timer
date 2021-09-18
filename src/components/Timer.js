@@ -8,12 +8,13 @@ const Timer = props => {
   const { workout } = props;
 
   const [hasStarted, setHasStarted] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [time, setTime] = useState();
   const [title, setTitle] = useState('Timer');
 
   useEffect(() => {
     let timer;
-    if (hasStarted) {
+    if (hasStarted && !isPaused) {
       timer = setTimeout(() => {
         if (time > 1) {
           setTime(prevTime => --prevTime);
@@ -33,7 +34,7 @@ const Timer = props => {
     return () => {
       clearTimeout(timer);
     };
-  }, [hasStarted, time, workout]);
+  }, [hasStarted, isPaused, time, workout]);
 
   const startWorkoutHandler = () => {
     const currentExercise = workout.shift();
@@ -45,7 +46,11 @@ const Timer = props => {
   };
 
   const toggleWorkoutHandler = () => {
-    setHasStarted(prevState => !prevState);
+    if (!hasStarted) {
+      startWorkoutHandler();
+    } else {
+      setIsPaused(prevState => !prevState);
+    }
   };
 
   return (
@@ -53,17 +58,16 @@ const Timer = props => {
       <span className={classes.title}>
         {!hasStarted ? TITLES.timer : title}
       </span>
-      {!hasStarted && <Button title="Start" onClick={startWorkoutHandler} />}
-      {hasStarted && <span className={classes.countdown}>{time}</span>}
-      {hasStarted && (
-        <div className={classes['button-container']}>
-          <Button
-            title={!hasStarted ? 'Start' : 'Pause'}
-            onClick={toggleWorkoutHandler}
-          />
-          <Button title="Stop" onClick={props.onStop} />
-        </div>
+      {hasStarted && !isPaused && (
+        <span className={classes.countdown}>{time}</span>
       )}
+      <div className={classes['button-container']}>
+        <Button
+          title={!hasStarted ? 'Start' : !isPaused ? 'Pause' : 'Continue'}
+          onClick={toggleWorkoutHandler}
+        />
+        <Button title="Stop" onClick={props.onStop} />
+      </div>
     </div>
   );
 };
