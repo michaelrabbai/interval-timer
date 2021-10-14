@@ -60,7 +60,7 @@ const Timer = props => {
   return (
     <div className={classes.timer}>
       <span className={classes.title}>
-        {!hasStarted ? TITLES.timer : title}
+        {!hasStarted || isPaused ? EXERCISE.titles.timer : title}
       </span>
       {hasStarted && !isPaused && (
         <span className={classes.countdown}>{time}</span>
