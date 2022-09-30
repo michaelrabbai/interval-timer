@@ -9,8 +9,13 @@ const Timer = props => {
 
   const [hasStarted, setHasStarted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [time, setTime] = useState();
+  const [id, setId] = useState(EXERCISE.ids.exercise);
   const [title, setTitle] = useState('Timer');
+  const [rep, setRep] = useState(1);
+  const [interval, setInterval] = useState(1);
+  const [time, setTime] = useState();
+
+  console.log(workout);
 
   useEffect(() => {
     let timer;
@@ -21,13 +26,11 @@ const Timer = props => {
         } else {
           const currentExercise = workout.shift();
           if (currentExercise) {
-            if (currentExercise.exerciseId !== EXERCISE.ids.end) {
-              setTime(currentExercise.duration);
-              setTitle(currentExercise.exerciseTitle);
-            } else {
-              setTime(currentExercise.duration);
-              setTitle(currentExercise.exerciseTitle);
-            }
+            setId(currentExercise.exerciseId);
+            setTime(currentExercise.duration);
+            setTitle(currentExercise.exerciseTitle);
+            setRep(currentExercise.rep);
+            setInterval(currentExercise.interval);
             onBackground(currentExercise);
           }
         }
@@ -62,6 +65,12 @@ const Timer = props => {
       <span className={classes.title}>
         {!hasStarted || isPaused ? EXERCISE.titles.timer : title}
       </span>
+      {hasStarted && id === EXERCISE.ids.exercise && (
+          <div className={classes['specs-container']}>
+            <span className={classes.specs}>{`Interval: ${interval}`}</span>
+            <span className={classes.specs}>{`Rep: ${rep}`}</span>
+          </div>
+      )}
       {hasStarted && !isPaused && (
         <span className={classes.countdown}>{time}</span>
       )}
@@ -77,3 +86,5 @@ const Timer = props => {
 };
 
 export default Timer;
+// input: 2 2 3 2 4
+// output: 2 3 2 4 2 3 2

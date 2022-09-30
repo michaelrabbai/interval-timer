@@ -16,6 +16,8 @@ export const createWorkout = workoutSpecs => {
         exerciseId: EXERCISE.ids.exercise,
         exerciseTitle: EXERCISE.titles.exercise,
         duration: exerciseDuration,
+        interval: interval + 1,
+        rep: rep + 1,
       });
 
       if (rep !== numReps - 1 && roundRestDuration > 0) {
@@ -26,6 +28,7 @@ export const createWorkout = workoutSpecs => {
         });
       }
     }
+
     if (interval !== numIntervals - 1 && intervalRestDuration > 0)
       regimen.push({
         exerciseId: EXERCISE.ids.intervalRest,
@@ -33,6 +36,7 @@ export const createWorkout = workoutSpecs => {
         duration: intervalRestDuration,
       });
   }
+
   regimen.push({
     exerciseId: EXERCISE.ids.end,
     exerciseTitle: EXERCISE.titles.end,
