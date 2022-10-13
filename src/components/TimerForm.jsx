@@ -5,6 +5,7 @@ import Input from './Input';
 import Button from './Button';
 import classes from './TimerForm.module.css';
 import INPUTLABELS from '../constants/input-labels';
+import { WorkoutSpecs } from '../helpers';
 
 const TimerForm = props => {
   return (
