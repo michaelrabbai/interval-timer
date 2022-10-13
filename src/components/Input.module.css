@@ -1,3 +1,4 @@
+/* FIXME: add margin on top input when browser is shrunk vertically */
 .container {
   display: flex;
   flex-direction: column;

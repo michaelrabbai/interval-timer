@@ -2,8 +2,15 @@ import { useField } from 'formik';
 
 import classes from './Input.module.css';
 
+interface InputProps {
+  id?: string;
+  label: string;
+  name: string;
+  type: string;
+  placeholder: string;
+}
 
-const Input = (props) => {
+const Input: React.FC<InputProps> = props => {
   const [field, meta] = useField(props);
 
   return (
